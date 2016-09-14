@@ -21,3 +21,4 @@ endif()
 
 add_subdirectory (TheApp)
 add_subdirectory (TheDll)
+add_subdirectory (TheStaticLib)

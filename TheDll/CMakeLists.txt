@@ -13,3 +13,6 @@ target_include_directories (${dllname}  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 # need to have dll tell that it is exporting
 target_compile_definitions(${dllname} PRIVATE THEDLL_EXPORTS)
+
+# Libraries
+target_link_libraries(${dllname} TheStaticLib )
