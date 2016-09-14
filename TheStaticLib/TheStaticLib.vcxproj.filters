@@ -16,21 +16,15 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
-    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TheDll.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="TheDll.cpp">
+    <ClCompile Include="MoreFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="theDll.def">
-      <Filter>Source Files</Filter>
-    </None>
+    <ClInclude Include="TheStaticLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
