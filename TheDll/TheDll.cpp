@@ -24,3 +24,10 @@ CTheDll::CTheDll()
 
     return;
 }
+
+// The staticDll will extern this function 
+int DllCustomize(int n)
+{
+	cout << "DllCustomize (n =" << n << " ) called." << endl;
+	return n * 3;
+}
