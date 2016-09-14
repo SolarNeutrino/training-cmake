@@ -7,7 +7,7 @@ using namespace std;
 
 
 // This is an example of an exported variable
-THEDLL_API int nTheDll=0;
+THEDLL_API_SYMBOL int nTheDll=0;
 
 // This is an example of an exported function.
 THEDLL_API int fnTheDll(void)
