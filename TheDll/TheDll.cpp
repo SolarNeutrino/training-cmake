@@ -31,3 +31,10 @@ int DllCustomize(int n)
 	cout << "DllCustomize (n =" << n << " ) called." << endl;
 	return n * 3;
 }
+// The staticDll will extern this function 
+// This will be used by a Function NOT exposed via DEF (say called from interrupt)
+int DllCustomizeInternal(int n)
+{
+	cout << "DllCustomizeInternal (n =" << n << " ) called." << endl;
+	return n * 3;
+}

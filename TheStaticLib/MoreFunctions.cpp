@@ -16,3 +16,11 @@ extern "C" int FeeFunction(int n)
 	cout << "FeeFunction ( n=" << n << ") called and calling DllCustomize.." << endl;
 	return DllCustomize(n);
 }
+
+// The staticDll will extern this function 
+extern int DllCustomizeInternal(int n);
+int FeeFunctionInternal(int n)
+{
+	cout << "FeeFunctionInternal ( n=" << n << ") called and calling DllCustomizeInternal.." << endl;
+	return DllCustomizeInternal(n);
+}
