@@ -5,7 +5,7 @@ project(dllProject LANGUAGES CXX C )
 set( dllname  TheDll )
 
 #define a Shared Library  and files needed
-add_library (${dllname} SHARED TheDll.cpp )
+add_library (${dllname} SHARED TheDll.cpp TheDll.h TheDll.def )
 
 # Make sure the compiler can find include files for our  library
 # when other libraries or executables link to ${dllname}
