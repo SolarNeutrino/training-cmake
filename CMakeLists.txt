@@ -55,6 +55,8 @@ add_subdirectory (TheDll)
 add_subdirectory (TheStaticLib)
 add_subdirectory (TestTheDll)
 
+SET(CMAKE_INSTALL_PREFIX /usr)
+
 #Package 
 set(CPACK_PACKAGE_VERSION_MAJOR ${training_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${training_VERSION_MINOR})
