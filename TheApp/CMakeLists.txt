@@ -14,3 +14,11 @@ INSTALL(TARGETS ${appname}
 		RUNTIME DESTINATION usr/bin
 		COMPONENT sample
 		)
+#these go under /usr/
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION usr/src/Training/TheApp
+	PATTERN ".*" EXCLUDE
+	PATTERN "CMake*" EXCLUDE
+    PATTERN "Debug*" EXCLUDE
+    PATTERN "Release*" EXCLUDE
+	PATTERN "*.vcxproj*" EXCLUDE
+    )

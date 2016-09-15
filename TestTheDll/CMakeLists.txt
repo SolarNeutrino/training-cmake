@@ -25,3 +25,12 @@ INSTALL(TARGETS ${appname}
 		RUNTIME DESTINATION usr/bin
 		COMPONENT tests
 		)
+
+#these go under /usr/
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION usr/src/Training/TestTheDll
+	PATTERN ".*" EXCLUDE
+	PATTERN "CMake*" EXCLUDE
+    PATTERN "Debug*" EXCLUDE
+    PATTERN "Release*" EXCLUDE
+	PATTERN "*.vcxproj*" EXCLUDE
+    )

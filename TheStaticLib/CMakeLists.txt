@@ -14,3 +14,6 @@ target_include_directories (${libname}  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 if(UNIX)
 	target_compile_options(${libname} PUBLIC "-fPIC")
 endif()
+INSTALL(FILES TheStaticLib.h
+	DESTINATION usr/src/Training/include
+	COMPONENT develop)

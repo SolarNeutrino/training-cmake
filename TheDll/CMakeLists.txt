@@ -31,9 +31,28 @@ if(UNIX)
 endif()
 
 
+
+#these go under /usr/
+if(0)
+#only providing header for users
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION usr/src/Training/TheDll
+	PATTERN ".*" EXCLUDE
+	PATTERN "CMake*" EXCLUDE
+    PATTERN "Debug*" EXCLUDE
+    PATTERN "Release*" EXCLUDE
+	PATTERN "*.vcxproj*" EXCLUDE
+	PATTERN "TheDll.h" EXCLUDE
+    )
+endif()
+
 INSTALL(TARGETS ${dllname}
 		ARCHIVE DESTINATION usr/lib${USRLIB_SUBDIR}
 		LIBRARY DESTINATION usr/lib${USRLIB_SUBDIR}
 		RUNTIME DESTINATION usr/bin
 		COMPONENT runtime
 		)
+
+# sample CMake 
+INSTALL(FILES TheDll.h 
+	DESTINATION usr/src/Training/include
+	COMPONENT develop)
