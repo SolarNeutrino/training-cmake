@@ -20,3 +20,8 @@ if (NOT MSVC)
 endif()
 
 add_test(NAME ${appname} COMMAND $<TARGET_FILE:${appname}>)
+
+INSTALL(TARGETS ${appname}
+		RUNTIME DESTINATION usr/bin
+		COMPONENT tests
+		)

@@ -23,7 +23,17 @@ else()
 endif()
 
 if(UNIX)
-	set_target_properties(${libname} PROPERTIES VERSION ${training_VERSION}
+	set_target_properties(${dllname} PROPERTIES VERSION ${training_VERSION}
 		                         SOVERSION ${training_VERSION_MAJOR}.${training_VERSION_MINOR}
+								 OUTPUT_NAME ${dllname} 
+								 LIBRARY_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR}/bin
 								 )
 endif()
+
+
+INSTALL(TARGETS ${dllname}
+		ARCHIVE DESTINATION usr/lib${USRLIB_SUBDIR}
+		LIBRARY DESTINATION usr/lib${USRLIB_SUBDIR}
+		RUNTIME DESTINATION usr/bin
+		COMPONENT runtime
+		)

@@ -33,6 +33,16 @@ if(MSVC)
 	set(GTEST_BUILD ON)
 endif()
 
+#RPATH for Shared Libraries
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+SET(INSTALL_RPATH_USE_LINK_PATH TRUE)
+# set the RPATH to look in 3 location
+# $ORIGIN				: same directory as binary
+# $ORIGIN/../lib/pals   : Relative to the exe's
+# /usr/lib/pals			: hard coded in /usr/lib/<packageL
+set(CMAKE_INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib${USRLIB_SUBDIR}:/usr/lib${USRLIB_SUBDIR}")
+
+
 
 # could do all here or let each do their own
 
@@ -44,3 +54,41 @@ add_subdirectory (TheApp)
 add_subdirectory (TheDll)
 add_subdirectory (TheStaticLib)
 add_subdirectory (TestTheDll)
+
+#Package 
+set(CPACK_PACKAGE_VERSION_MAJOR ${training_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${training_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${training_VERSION_PATCH})
+
+set(CPACK_PACKAGE_VERSION ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH})
+
+set( CPACK_PACKAGE_VENDOR "Keysight Technologies")
+
+# Type of package (reduce down from defaults)
+if (MSVC)
+	SET(CPACK_GENERATOR "ZIP")
+	if( ${CMAKE_EXE_LINKER_FLAGS} MATCHES  ".*64$")
+			set(CPACK_SYSTEM_NAME "win64")
+	else()
+			set(CPACK_SYSTEM_NAME "win32")
+	endif()
+else()
+	SET(CPACK_GENERATOR "TGZ")
+	if("$ENV{ARCH}" STREQUAL "arm")
+		set(CPACK_SYSTEM_NAME "arm" )
+		# these are for the P600 only, the tarball need to NOT have the '-arm' in the root directory
+		# the present yocto recipe chokes on it.
+		#set(CPACK_PACKAGING_INSTALL_PREFIX "/${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}/usr" )
+		#set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY 0)
+	else()
+		set(CPACK_SYSTEM_NAME "x86" )
+	endif()
+endif()
+
+set(CPACK_PACKAGE_FILE_NAME ${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_SYSTEM_NAME}${TARBALL_FN_EXT})
+
+set(CPACK_ARCHIVE_COMPONENT_INSTALL ON)
+set(CPACK_MONOLITHIC_INSTALL ON)
+
+
+INCLUDE(CPack)
