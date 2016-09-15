@@ -15,5 +15,5 @@ if(UNIX)
 	target_compile_options(${libname} PUBLIC "-fPIC")
 endif()
 INSTALL(FILES TheStaticLib.h
-	DESTINATION usr/src/Training/include
+	DESTINATION src/Training/include
 	COMPONENT develop)

@@ -11,11 +11,12 @@ add_executable (${appname} TheAppSource.cpp )
 target_link_libraries(${appname} TheDll )
 
 INSTALL(TARGETS ${appname}
-		RUNTIME DESTINATION usr/bin
+		RUNTIME DESTINATION bin
 		COMPONENT sample
 		)
 #these go under /usr/
-INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION usr/src/Training/TheApp
+# remove the leading usr/
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION src/Training/TheApp
 	PATTERN ".*" EXCLUDE
 	PATTERN "CMake*" EXCLUDE
     PATTERN "Debug*" EXCLUDE

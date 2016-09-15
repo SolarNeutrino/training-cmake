@@ -33,9 +33,10 @@ endif()
 
 
 #these go under /usr/
+#remove the usr/
 if(0)
 #only providing header for users
-INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION usr/src/Training/TheDll
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION src/Training/TheDll
 	PATTERN ".*" EXCLUDE
 	PATTERN "CMake*" EXCLUDE
     PATTERN "Debug*" EXCLUDE
@@ -46,13 +47,13 @@ INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION usr/src/Training/TheD
 endif()
 
 INSTALL(TARGETS ${dllname}
-		ARCHIVE DESTINATION usr/lib${USRLIB_SUBDIR}
-		LIBRARY DESTINATION usr/lib${USRLIB_SUBDIR}
-		RUNTIME DESTINATION usr/bin
+		ARCHIVE DESTINATION lib${USRLIB_SUBDIR}
+		LIBRARY DESTINATION lib${USRLIB_SUBDIR}
+		RUNTIME DESTINATION bin
 		COMPONENT runtime
 		)
 
 # sample CMake 
 INSTALL(FILES TheDll.h 
-	DESTINATION usr/src/Training/include
+	DESTINATION src/Training/include
 	COMPONENT develop)

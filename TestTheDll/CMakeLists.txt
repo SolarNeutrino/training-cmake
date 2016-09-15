@@ -21,13 +21,14 @@ endif()
 
 add_test(NAME ${appname} COMMAND $<TARGET_FILE:${appname}>)
 
+#remove leading usr/
 INSTALL(TARGETS ${appname}
-		RUNTIME DESTINATION usr/bin
+		RUNTIME DESTINATION bin
 		COMPONENT tests
 		)
 
 #these go under /usr/
-INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION usr/src/Training/TestTheDll
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION src/Training/TestTheDll
 	PATTERN ".*" EXCLUDE
 	PATTERN "CMake*" EXCLUDE
     PATTERN "Debug*" EXCLUDE
